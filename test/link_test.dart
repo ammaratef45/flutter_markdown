@@ -117,6 +117,20 @@ void defineTests() {
     );
 
     testWidgets(
+      'empty inline link',
+      (WidgetTester tester) async {
+        const String data = '[](/uri "title")';
+        await tester.pumpWidget(
+          boilerplate(
+            MarkdownBody(
+              data: data,
+            ),
+          ),
+        );
+      },
+    );
+
+    testWidgets(
       // Example 494 from GFM.
       'simple inline link - title omitted',
       (WidgetTester tester) async {

@@ -213,6 +213,10 @@ class MarkdownBuilder implements md.NodeVisitor {
     }
 
     if (tag == 'a') {
+      // Add empty child text if link is provided without value
+      if (element.children.isEmpty) {
+        element.children.add(md.Text(''));
+      }
       String text = extractTextFromElement(element);
       String destination = element.attributes['href'];
       String title = element.attributes['title'] ?? "";
