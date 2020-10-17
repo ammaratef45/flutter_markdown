@@ -120,15 +120,19 @@ void defineTests() {
       'empty inline link',
       (WidgetTester tester) async {
         const String data = '[](/uri "title")';
+        MarkdownLink linkTapResults;
         await tester.pumpWidget(
           boilerplate(
             MarkdownBody(
               data: data,
+              onTapLink: (text, href, title) =>
+                  linkTapResults = MarkdownLink(text, href, title),
             ),
           ),
         );
 
         expectValidLink('');
+        expectLinkTap(linkTapResults, MarkdownLink('', '/uri', 'title'));
       },
     );
 
