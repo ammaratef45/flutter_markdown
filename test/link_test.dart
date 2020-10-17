@@ -127,6 +127,8 @@ void defineTests() {
             ),
           ),
         );
+
+        expectValidLink('');
       },
     );
 
