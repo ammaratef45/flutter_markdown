@@ -131,8 +131,8 @@ void defineTests() {
           ),
         );
 
-        expectValidLink('');
-        expectLinkTap(linkTapResults, MarkdownLink('', '/uri', 'title'));
+        expect(find.byType(RichText), findsNothing);
+        expect(linkTapResults, isNull);
       },
     );
 
